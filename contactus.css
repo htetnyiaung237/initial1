@@ -1,0 +1,102 @@
+html, body {
+    background-image: linear-gradient(to right, black 50%, rgb(214, 213, 213));
+    opacity: 90%;
+}
+
+.con-container {
+    position: relative;
+    width: 800px; height: 80vh;
+    top: 60px; left: 430px;
+    border: none;
+    box-shadow: 0 0 30px 0 rgb(189, 27, 195);;
+    border-radius: 50px;
+    text-align: left;
+}
+
+.contact-info {
+    background-color: black;
+    position:  absolute;
+    left: 300px; top: 140px;
+    width: 280px; height: 45vh;
+    border: none;
+    box-shadow: 0 0 20px 0 white;
+    text-align: left;
+    padding: 45px;
+    border-radius: 50px;
+    z-index: 1;
+}
+
+.contact-info > .items {
+    padding-top: 15px;
+    font-size: 23px;
+    color: white;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+.fa-phone, .fa-envelope, .fa-location-dot {
+    color:  rgb(189, 27, 195);
+    font-size: 30px;
+}
+
+.fa-envelope, .fa-location-dot {
+    padding-top: 45px;
+}
+
+i > span {
+    color: white;
+    font-size: 30px;
+    font-weight: 550;
+    padding-left: 15px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+.inputs > input, label {
+    color: white;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: 550; font-size: 20px;
+    display: block;
+    margin-left: 500px;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 20px;
+}
+
+.inputs {
+    position: absolute;
+    right: 100px;
+    margin: 25px;
+    height: 0;
+}
+
+input {
+    box-shadow: 0 0 20px 0 white;
+    width: 300px;
+}
+
+.submit-btn {
+    position: absolute;
+    top: 450px; left: 350px;
+    background-image: linear-gradient(to right, rgb(189, 27, 195), rgb(85, 11, 154));
+    color: white;
+    font-size: 20px; font-weight: 550;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    width: 350px;
+    border: none;
+    border-radius: 100px;
+    padding: 25px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-image: linear-gradient(to right, rgb(221, 97, 225), rgb(144, 79, 204));
+    box-shadow: 0 0 8px 0 rgb(189, 27, 195);
+}
+
+.con-footer {
+    color: white;
+    opacity: 25%;
+    font-size: 13px;
+    margin-top: 150px;
+}

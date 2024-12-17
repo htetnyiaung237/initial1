@@ -1,23 +1,20 @@
-// DOM
-const startPointSelect = document.querySelector('.start-point');
-const endPointSelect = document.querySelector('.end-point');
-const carSelect = document.querySelector('.form-car');
-const carDataDisplay = document.querySelectorAll('.car-info');
-const cacuButton = document.getElementById('estiBtn');
-const conButton = document.getElementById('continueBtn');
+// Initializing DOMs
+let startPoint = document.querySelector('.start-point');
+let endPoint = document.querySelector('.end-point');
+let carsChoose = document.querySelector('.form-car');
+// make sure if it works
+console.log(carsChoose);
+console.log(startPoint);
+console.log(endPoint);
 
-conButton.addEventListener('click', function() {
-    window.location.href = 'expression.html';
-    
-})
+// declarations of necessary variables
+let selectedStart = '';
+let selectedEnd = '';
+let distance = '';
+let selectedCars = '';
+let fuelEfficiency = '';
 
-// Assign the variables that would need below
-let selectStartOption = '';
-let selectEndOption = '';
-let selectedCar = '';
-let selectDistance = null;
-
-// Store the related datas in objects
+// objects storing needed data for users
 let distances = {
     "Yangon-Mandalay": 626, "Yangon-Taunggyi": 645, "Yangon-Bagan": 629, "Yangon-Naypyidaw": 370, "Yangon-Pyin Oo Lwin": 675, "Yangon-Kalaw": 580, "Yangon-Mawlamyine": 312, "Yangon-Bago": 78,
     "Mandalay-Naypyidaw": 269, "Mandalay-Taunggyi": 321, "Mandalay-Pyin Oo Lwin": 64, "Mandalay-Bago": 563, "Mandalay-Mawlamyine": 718, "Mandalay-Kalaw": 255, "Mandalay-Bagan": 180, 
@@ -30,132 +27,132 @@ let distances = {
 };
 
 let theCars = {
-    forLands : 
-    { type : "Toyota", model : "LandCruiser", modelYear : "2008-2022", 
-        engineSizes : 4.5,
-        fuelCapacity : 138,
-        fuelEffi : 9,
-    },
-    forKlu : {
-        type: "Toyota", model: "Kluger", modelYear : "2007-2019",
-        engineSizes : 2.4,
-        fuelCapacity : 65,
-        fuelEffi : 9,
-    },
-    forSurf : {
-        type: "Toyota", model: "Hilux Surf SSR-G", modelYear: "2002-2009",
-        engineSizes : 3.0,
-        fuelCapacity : 70,
-        fuelEffi : 10,
-    },
-    forBel : {
-        type: "Toyota", model: "Belta", modelYear: "2005- 2014",
-        engineSizes : 1.3,
-        fuelCapacity : 42,
-        fuelEffi : 15,
-    },
-    forAlp : {
-        type: "Toyota", model: "Alphat", modelYear: "2002-2022",
-        engineSizes : 3.0,
-        fuelCapacity : 65,
-        fuelEffi : 10,
-    },
-    forCiaz : {
-        type : "Suzuki", model: "Fit Ciaz", modelYear: "2014",
-        engineSizes : 1.4,
-        fuelCapacity : 43,
-        fuelEffi : 16,
-    },
-    forSwift : {
-        type : "Suzuki", model: "Swift", modelYear: "2010-2020",
-        engineSizes : 1.2,
-        fuelCapacity : 42,
-        fuelEffi : 23,
-    },
-}
+    forLands : { type : "Toyota", model : "LandCruiser", modelYear : "2008-2022", engineSizes : 4.5, fuelCapacity : 138, fuelEffi : 7 },
+    forKlu : { type: "Toyota", model: "Kluger", modelYear : "2007-2019", engineSizes : 2.4, fuelCapacity : 65, fuelEffi : 9 },
+    forSurf : { type: "Toyota", model: "Hilux Surf SSR-G", modelYear: "2002-2009", engineSizes : 3.0, fuelCapacity : 70, fuelEffi : 8 },
+    forBel : { type: "Toyota", model: "Belta", modelYear: "2005- 2014", engineSizes : 1.3, fuelCapacity : 42, fuelEffi : 15 },
+    forAlp : { type: "Toyota", model: "Alphat", modelYear: "2002-2022", engineSizes : 3.0, fuelCapacity : 65, fuelEffi : 10 },
+    forCiaz : { type : "Suzuki", model: "Fit Ciaz", modelYear: "2014", engineSizes : 1.4, fuelCapacity : 43, fuelEffi : 14 },
+    forSwift : { type : "Suzuki", model: "Swift", modelYear: "2010-2020", engineSizes : 1.2, fuelCapacity : 42, fuelEffi : 23 },
+};
 
-// eventlisteners for select boxs
-const value = startPointSelect.getAttribute("data-value");
+let subButton = document.getElementById('subBtn');
+console.log(subButton); 
 
-startPointSelect.addEventListener('change', function() {
+// userinteractions
+startPoint.addEventListener('change', function() {
     console.clear();
-    selectStartOption = startPointSelect.value;
-    showDistance();
+    selectedStart = startPoint.value;
+    console.log(selectedStart);
+    makeDistance();
 })
 
-endPointSelect.addEventListener('change', function() {
+endPoint.addEventListener('change', function() {
     console.clear();
-    selectEndOption = endPointSelect.value;
-    showDistance();
+    selectedEnd = endPoint.value;
+    console.log(selectedEnd);
+    makeDistance();
 })
 
-carSelect.addEventListener('change', function() {
+carsChoose.addEventListener('change', function() {
     console.clear();
-    selectedCar = carSelect.value;
-    showCar();
+    selectedCars = carsChoose.value;
+    console.log(selectedCars);
+    makeCar();
+    scroll1();
 })
 
-// function that would catch the distances from object
-function showDistance() {
-    if (selectStartOption && selectEndOption) {
-        let key = selectStartOption + "-" + selectEndOption;
-        let reKey = selectEndOption + "-" + selectStartOption;
-
+// pull up the distance between two points based on user's selection
+function makeDistance() {
+    if (selectedStart && selectedEnd) {
+        let key = selectedStart + "-" + selectedEnd;
+        let reKey = selectedEnd + "-" + selectedStart;
+ 
         if (distances[key] !== undefined) {
-            selectDistance = distances[key];
-            console.log("Distance from " + selectStartOption + " to " + selectEndOption + " is " + selectDistance + " km.")
+            distance = distances[key];
+            console.log(distance);
         } else if (distances[reKey] !== undefined) {
-            selectDistance = distances[reKey];
-            console.log(selectDistance);
-        } 
-        else {
-            selectDistance = null;
-            console.log("Same places can't be assign for distance!");
+            distance = distances[reKey];
+            console.log(distance);
+        } else {
+            console.log("Dude, same points are not assigned for distance!")
         }
+        localStorage.setItem('distance', distance);
     }
 }
 
-// function for cars...
-function showCar() {
-    let carDetails = '';
-
-    if (selectedCar === "Toyota LandCruiser") {
+// pull up car's data based on user's selection and then display
+let carDetails = '';
+function makeCar() {
+    if (selectedCars === "Toyota LandCruiser") {
         carDetails = theCars.forLands;
-        console.log(carDetails);
-    } else if (selectedCar === "Toyota Kluger") {
+    } else if (selectedCars === "Toyota Kluger") {
         carDetails = theCars.forKlu;
-    } else if (selectedCar === "Toyota Hilux Surf") {
+    } else if (selectedCars === "Toyota Hilux Surf") {
         carDetails = theCars.forSurf;
-    } else if (selectedCar === "Toyota Belta") {
+    } else if (selectedCars === "Toyota Belta") {
         carDetails = theCars.forBel;
-    } else if (selectedCar === "Toyota Alphat") {
+    } else if (selectedCars === "Toyota Alphat") {
         carDetails = theCars.forAlp;
-    } else if (selectedCar === "Suzuki Ciaz") {
+    } else if (selectedCars === "Suzuki Ciaz") {
         carDetails = theCars.forCiaz;
-    } else if (selectedCar === "Suzuki Swift") {
-        carDetails = theCars.forSwift
+    } else if (selectedCars === "Suzuki Swift") {
+        carDetails = theCars.forSwift;
     }
 
-    let fuel = carDetails.fuelEffi;
-    console.log(fuel);
+    displayCar[0].innerHTML = "Type: " + carDetails.type;
+    displayCar[1].innerHTML = "Model: " + carDetails.model;
+    displayCar[2].innerHTML = "Model Year: " + carDetails.modelYear;
+    displayCar[3].innerHTML = "Engine Size: " + carDetails.engineSizes + "L"; 
+    displayCar[4].innerHTML = "Fuel Capacity: " + carDetails.fuelCapacity + "L";
+    displayCar[5].innerHTML = "Fuel Efficiency: " + carDetails.fuelEffi + "km/L";
+
+    fuelEfficiency = carDetails.fuelEffi;
+    // console.log(fuelEfficiency);
 }
 
-// caculation of cost
-let price = 3290;
-// let finalCost = caculate(selectDistance, fuel, price);
-//     console.log("Fuel cost is " + finalCost);
-cacuButton.addEventListener('click', function(cacuEvent) {
-    cacuEvent.preventDefault();
-    showCar();
-    if (selectDistance && fuel) {
-        let finalCost = caculate(selectDistance, fuel, price);
-        console.log("final cost is " + finalCost);
-    } else {
-        console.log("Null");
+let displayCar = document.querySelectorAll('.car-data');
+console.log(displayCar);
+
+let cacuButton = document.getElementById('estiBtn');
+console.log(cacuButton);
+
+let fuelPrice = 3290;
+cacuButton.addEventListener('click', function() {
+    caculate();
+    scroll2();
+})
+
+function scroll1() {
+    window.scrollTo(0, 650);
+}
+
+function scroll2() {
+    window.scrollTo(0, 1200);
+}
+
+// caculation of fuel price based on user's selected data
+function caculate() {
+    let d = '';
+    let f = '';
+
+    if (distance && fuelEfficiency) {
+        d = parseFloat(distance);
+        console.log(d);
+        f = parseFloat(fuelEfficiency);
+        console.log(f);
     }
-});
-
-function caculate(distance, fuelEfficiency, fuelPrice) {
-    return (distance / fuelEfficiency) * fuelPrice;
+    var result = (d / f)*fuelPrice;
+    console.log(result.toFixed(2));
+    displayCost[0].innerHTML = result.toLocaleString() + " MMK";
 }
 
+let displayCost = document.querySelectorAll('.estm-cost');
+console.log(displayCost);
+
+let contactButton = document.getElementById('contactBtn');
+console.log(contactButton)
+
+contactButton.addEventListener('click', function() {
+    window.location.href = "contact.html";
+})

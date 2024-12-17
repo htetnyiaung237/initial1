@@ -35,8 +35,12 @@ html, body {
     top: 170px;
 }
 
-button {
+button > a {
     color: white;
+    text-decoration: none;
+}
+
+button {
     position: absolute;
     left: 630px; bottom: 150px;
     border: none;
@@ -57,9 +61,21 @@ button:hover {
     box-shadow: 0 0 8px 0 rgb(189, 27, 195);
 }
 
+.sec-btn:hover {
+    background-image: linear-gradient(to right, rgb(221, 97, 225), rgb(144, 79, 204));
+    box-shadow: 0 0 8px 0 rgb(189, 27, 195);
+}
+
 footer {
     position: absolute;
     bottom: 10px;
+    opacity: 30%;
+    font-size: 12px;
+    color: white;
+}
+
+.footer {
+    margin-top: 50px;
     opacity: 30%;
     font-size: 12px;
     color: white;
@@ -89,7 +105,7 @@ footer {
 
 .start-end-container > select {
     color: white;
-    margin: 30px;
+    margin: 35px;
     font-weight: 550;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-size: large;
@@ -101,29 +117,40 @@ footer {
     background-image: linear-gradient(to right, rgb(189, 27, 195), rgb(85, 11, 154));
 }
 
+.form-car {
+    position: absolute;
+    bottom: 60px; left: 400px;
+    color: white;
+    font-weight: 550;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: large;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 0 15px 0 purple;
+    background-image: linear-gradient(to right, rgb(189, 27, 195), rgb(85, 11, 154));
+} 
+
+.form-car > option {
+    background-color: rgb(43, 42, 42);
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;;
+}
+
 .start-end-container > select > option {
     background-color: rgb(43, 42, 42);
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;;
 }
 
-.sec-btn {
-    font-size: larger;
-    font-weight: 550;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    border-radius: 75px;
-    margin-top: 30px;
-    transition: box-shadow 0.3s ease;
-}
-
 .express-container {
     position: relative;
-    width: 750px;
+    width: 700px;
     height: 82vh;
     border: none;
     border-radius: 100px;
     text-align: center;
     box-shadow: 0 0 20px 0 white;
-    margin-top: 65px; margin-left: 380px;
+    margin-top: 200px; margin-left: 400px;
 }
 
 .car-header {
@@ -134,7 +161,7 @@ footer {
     padding: 23px;
 }
 
-.car-info {
+.car-data {
     color: white;
     font-size: 25px;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
@@ -142,14 +169,20 @@ footer {
     line-height: 2;
 }
 
-.trd-btn {
+.sec-btn {
     position: absolute;
-    left: 255px; bottom: 27px;
+    left: 235px; bottom: 27px;
+    color: white;
+    font-size: larger;
+    font-weight: 550;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    border-radius: 75px;
+    transition: box-shadow 0.3s ease;
 }
 
 .result-container {
     position: relative;
-    top: 150px; left: 160px;
+    top: 100px; left: 160px;
     width: 1200px;
     height: 45vh;
     border: none;
@@ -168,14 +201,34 @@ footer {
 
 .estm-cost {
     position: absolute;
-    left: 370px; bottom: 70px;
+    left: 170px; bottom: 80px;
     width: 400px;
     padding: 30px;
     border: none;
     border-radius: 100px;
     box-shadow: 0 0 20px 0 rgb(189, 27, 195);
     color: white;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 550;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+.note {
+    color: rgb(241, 208, 236);
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: medium;
+    text-align: center;
+    margin-top: 180px;
+}
+
+.contact-us {
+    position: absolute;
+    bottom: 75px;
+    margin-left: 150px;
+    color: white;
+    font-size: larger;
+    font-weight: 550;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    border-radius: 75px;
+    transition: box-shadow 0.3s ease;
 }
